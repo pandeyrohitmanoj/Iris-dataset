@@ -69,7 +69,7 @@ def evaluate_classification():
 
 
 def feature_importance_svc():
-    best_model= svc_model.best_estimator_
+    best_model= model.best_estimator_
     perm_importance = permutation_importance(
         best_model, X_test, y_test, 
         n_repeats=10, 
@@ -78,7 +78,6 @@ def feature_importance_svc():
     )
     # feature_names = best_model.named_steps['preprocessor'].get_feature_names_out()
     feature_names = copy_df.drop('Species',axis=1).columns
-    print('importance bumpy')
     fig,ax = plt.subplots(figsize=(8,10))
     importance_df = pd.DataFrame({
         'feature': feature_names,
